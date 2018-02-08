@@ -35,7 +35,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(type(of: nameTextField))
         // Handle the text field's user input through the delegate callbacks
         nameTextField.delegate = self
     }
