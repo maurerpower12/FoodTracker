@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,10 +51,21 @@
                                     <constraint firstAttribute="trailing" secondItem="P9o-c5-AiX" secondAttribute="trailing" id="iZJ-1X-UFo"/>
                                 </constraints>
                             </stackView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jKS-n1-6Hb">
+                                <rect key="frame" x="16" y="144.5" width="320" height="320"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jKS-n1-6Hb" secondAttribute="height" multiplier="1:1" id="mN5-Hi-Bpf"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="VXX-JX-g8n" appends="YES" id="Dyg-cj-3Dm"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XBI-vz-RfF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="SHv-Le-3Ux"/>
+                            <constraint firstItem="jKS-n1-6Hb" firstAttribute="top" secondItem="XBI-vz-RfF" secondAttribute="bottom" constant="8" id="awX-ui-nSV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XBI-vz-RfF" secondAttribute="trailing" id="iJK-OJ-WlB"/>
                             <constraint firstItem="XBI-vz-RfF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uv0-m9-jkb"/>
                         </constraints>
@@ -61,11 +73,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="hl1-JJ-Maj" id="3Yq-MK-kGZ"/>
                         <outlet property="nameTextField" destination="P9o-c5-AiX" id="CEe-fJ-IUA"/>
+                        <outlet property="photoImageView" destination="jKS-n1-6Hb" id="hbL-OF-f6U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VXX-JX-g8n">
+                    <connections>
+                        <action selector="selectImageFromLibrary:" destination="BYZ-38-t0r" id="22M-bn-BF4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="320" height="320"/>
+    </resources>
 </document>

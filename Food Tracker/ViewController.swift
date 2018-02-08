@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate,
+        UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Mark: Properties
     
@@ -25,7 +26,52 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var mealNameLabel: UILabel!
     
+    @IBOutlet weak var photoImageView: UIImageView!
+    
+    // Mark: UIImagePickerControllerDelegate 
+    
+    // Gets called when a user hits cancel
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss if the user hit 'cancel'
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    //This method gives you a chance to do something with the image or images 
+    // that a user selected from the picker. 
+    // In your case, you’ll take the selected image and display it in your image view.
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        // The info dictionary may contain mutliple representations of the image. Yuo want to use the original.
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as?
+        UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        // Set the photoimageview to the selected image
+        photoImageView.image = selectedImage
+        
+        // Dimiss the image picker
+        dismiss(animated: true, completion: nil)
+    }
+    
     // Mark: Actions
+    
+    @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
+        // Hide the keyboard just incase
+        nameTextField.resignFirstResponder()
+        
+        // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+        let imagePickerController = UIImagePickerController()
+        
+        // only allow images to be picked, not taken
+        imagePickerController.sourceType = .photoLibrary
+        
+        // make sure ViewController is notified when the user picks an image
+        imagePickerController.delegate = self
+        
+        present(imagePickerController, animated: true, completion: nil)
+    }
     
     // This method is an action of type Interface Builder.
     @IBAction func setDefaultLabelText(_ sender: UIButton) {
