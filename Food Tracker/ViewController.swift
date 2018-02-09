@@ -28,7 +28,9 @@ class ViewController: UIViewController, UITextFieldDelegate,
     
     @IBOutlet weak var photoImageView: UIImageView!
     
-    // Mark: UIImagePickerControllerDelegate 
+    @IBOutlet weak var ratingControl: RatingControl!
+    
+    // Mark: UIImagePickerControllerDelegate
     
     // Gets called when a user hits cancel
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -71,11 +73,6 @@ class ViewController: UIViewController, UITextFieldDelegate,
         imagePickerController.delegate = self
         
         present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    // This method is an action of type Interface Builder.
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        mealNameLabel.text = "Default Text"
     }
     
     
