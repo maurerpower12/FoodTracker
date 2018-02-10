@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="trailing" secondItem="P9o-c5-AiX" secondAttribute="trailing" id="iZJ-1X-UFo"/>
                                 </constraints>
                             </stackView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jKS-n1-6Hb">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jKS-n1-6Hb">
                                 <rect key="frame" x="16" y="106.5" width="320" height="320"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -54,8 +54,8 @@
                                     <outletCollection property="gestureRecognizers" destination="VXX-JX-g8n" appends="YES" id="Dyg-cj-3Dm"/>
                                 </connections>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-sr-111" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="16" y="448.5" width="407" height="75"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-sr-111" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="16" y="449" width="343" height="80"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
                                         <integer key="value" value="5"/>
@@ -68,12 +68,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ofW-sr-111" firstAttribute="top" secondItem="jKS-n1-6Hb" secondAttribute="bottom" constant="22" id="B9N-Fu-L3h"/>
                             <constraint firstItem="XBI-vz-RfF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="SHv-Le-3Ux"/>
-                            <constraint firstItem="ofW-sr-111" firstAttribute="top" secondItem="jKS-n1-6Hb" secondAttribute="bottom" constant="22" id="WFY-z0-3f4"/>
+                            <constraint firstItem="ofW-sr-111" firstAttribute="trailing" secondItem="XBI-vz-RfF" secondAttribute="trailing" id="ZD8-po-pP9"/>
                             <constraint firstItem="jKS-n1-6Hb" firstAttribute="top" secondItem="XBI-vz-RfF" secondAttribute="bottom" constant="8" id="awX-ui-nSV"/>
+                            <constraint firstItem="ofW-sr-111" firstAttribute="leading" secondItem="jKS-n1-6Hb" secondAttribute="leading" id="cyf-RE-aCj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XBI-vz-RfF" secondAttribute="trailing" id="iJK-OJ-WlB"/>
                             <constraint firstItem="jKS-n1-6Hb" firstAttribute="leading" secondItem="XBI-vz-RfF" secondAttribute="leading" id="pQL-8w-cLS"/>
-                            <constraint firstItem="jKS-n1-6Hb" firstAttribute="leading" secondItem="ofW-sr-111" secondAttribute="leading" id="tYF-DC-Cku"/>
                             <constraint firstItem="XBI-vz-RfF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uv0-m9-jkb"/>
                         </constraints>
                     </view>
