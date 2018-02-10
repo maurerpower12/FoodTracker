@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Meal Table View Controller-->
         <scene sceneID="aa0-hq-hzp">
             <objects>
-                <tableViewController id="Xqe-xh-X6u" sceneMemberID="viewController">
+                <tableViewController id="Xqe-xh-X6u" customClass="MealTableViewController" customModule="Food_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="KKc-H2-Otv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,6 +49,11 @@
                                         </stackView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="qUd-rm-dZ8" id="QtZ-cc-Hjh"/>
+                                    <outlet property="photoImageView" destination="pFt-q6-CpN" id="lZ1-5H-cYj"/>
+                                    <outlet property="ratingControl" destination="8lH-id-DMe" id="hN2-3S-iTx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -74,16 +79,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XBI-vz-RfF">
-                                <rect key="frame" x="16" y="40" width="343" height="58.5"/>
+                                <rect key="frame" x="16" y="40" width="343" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl1-JJ-Maj">
-                                        <rect key="frame" x="128.5" y="0.0" width="86.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Meal Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P9o-c5-AiX">
-                                        <rect key="frame" x="0.0" y="28.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -95,7 +94,7 @@
                                 </constraints>
                             </stackView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jKS-n1-6Hb">
-                                <rect key="frame" x="16" y="106.5" width="320" height="320"/>
+                                <rect key="frame" x="16" y="78" width="320" height="320"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jKS-n1-6Hb" secondAttribute="height" multiplier="1:1" id="mN5-Hi-Bpf"/>
@@ -104,8 +103,8 @@
                                     <outletCollection property="gestureRecognizers" destination="VXX-JX-g8n" appends="YES" id="Dyg-cj-3Dm"/>
                                 </connections>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-sr-111" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="16" y="449" width="343" height="88"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-sr-111" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="16" y="420" width="343" height="75"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
                                         <integer key="value" value="5"/>
@@ -129,7 +128,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mealNameLabel" destination="hl1-JJ-Maj" id="3Yq-MK-kGZ"/>
                         <outlet property="nameTextField" destination="P9o-c5-AiX" id="CEe-fJ-IUA"/>
                         <outlet property="photoImageView" destination="jKS-n1-6Hb" id="hbL-OF-f6U"/>
                         <outlet property="ratingControl" destination="ofW-sr-111" id="9XL-RU-BHy"/>
