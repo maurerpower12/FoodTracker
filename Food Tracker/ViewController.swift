@@ -67,6 +67,10 @@ class ViewController: UIViewController, UITextFieldDelegate,
     
     //MARK: Navigation
     
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
