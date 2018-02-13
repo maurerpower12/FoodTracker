@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class ViewController: UIViewController, UITextFieldDelegate,
         UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -24,11 +25,18 @@ class ViewController: UIViewController, UITextFieldDelegate,
     */
     @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet var mealNameLabel: UILabel!
-    
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBOutlet weak var ratingControl: RatingControl!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    /*
+     This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
+     or constructed as part of adding a new meal.
+     */
+    var meal: Meal?
+    
     
     // Mark: UIImagePickerControllerDelegate
     
@@ -56,6 +64,25 @@ class ViewController: UIViewController, UITextFieldDelegate,
         // Dimiss the image picker
         dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let name = nameTextField.text ?? ""
+        let photo = photoImageView.image
+        let rating = ratingControl.rating
+        
+        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        meal = Meal(name: name, photo: photo, rating: rating)
+    }
+    
     
     // Mark: Actions
     
@@ -95,7 +122,7 @@ class ViewController: UIViewController, UITextFieldDelegate,
     
     // Action for editing stopped
     func textFieldDidEndEditing(_ textField: UITextField) {
-        mealNameLabel.text = textField.text
+        navigationItem.title = textField.text
     }
 }
 
