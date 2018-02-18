@@ -38,12 +38,15 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stackView opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8lH-id-DMe" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
+                                        <stackView opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8lH-id-DMe" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
                                             <rect key="frame" x="102" y="37" width="252" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="size" keyPath="starSize">
-                                                    <size key="value" width="9" height="15"/>
+                                                    <size key="value" width="44" height="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                    <integer key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </stackView>
@@ -101,17 +104,7 @@
                                     <constraint firstAttribute="trailing" secondItem="P9o-c5-AiX" secondAttribute="trailing" id="iZJ-1X-UFo"/>
                                 </constraints>
                             </stackView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jKS-n1-6Hb">
-                                <rect key="frame" x="16" y="122" width="320" height="320"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="jKS-n1-6Hb" secondAttribute="height" multiplier="1:1" id="mN5-Hi-Bpf"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="VXX-JX-g8n" appends="YES" id="Dyg-cj-3Dm"/>
-                                </connections>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-sr-111" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ofW-sr-111" customClass="RatingControl" customModule="Food_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="16" y="464" width="343" height="75"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starCount">
@@ -122,14 +115,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="320" verticalCompressionResistancePriority="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jKS-n1-6Hb">
+                                <rect key="frame" x="16" y="122" width="343" height="334"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jKS-n1-6Hb" secondAttribute="height" multiplier="1:1" constant="9" id="mN5-Hi-Bpf"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="VXX-JX-g8n" appends="YES" id="Dyg-cj-3Dm"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ofW-sr-111" firstAttribute="top" secondItem="jKS-n1-6Hb" secondAttribute="bottom" constant="22" id="B9N-Fu-L3h"/>
+                            <constraint firstItem="ofW-sr-111" firstAttribute="top" secondItem="jKS-n1-6Hb" secondAttribute="bottom" constant="8" id="B9N-Fu-L3h"/>
+                            <constraint firstItem="ofW-sr-111" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-32" id="LAE-aH-YiG"/>
                             <constraint firstItem="XBI-vz-RfF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="SHv-Le-3Ux"/>
                             <constraint firstItem="ofW-sr-111" firstAttribute="trailing" secondItem="XBI-vz-RfF" secondAttribute="trailing" id="ZD8-po-pP9"/>
                             <constraint firstItem="jKS-n1-6Hb" firstAttribute="top" secondItem="XBI-vz-RfF" secondAttribute="bottom" constant="8" id="awX-ui-nSV"/>
-                            <constraint firstItem="ofW-sr-111" firstAttribute="leading" secondItem="jKS-n1-6Hb" secondAttribute="leading" id="cyf-RE-aCj"/>
+                            <constraint firstItem="jKS-n1-6Hb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="320:667" constant="23" id="cYr-kj-UPt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XBI-vz-RfF" secondAttribute="trailing" id="iJK-OJ-WlB"/>
                             <constraint firstItem="jKS-n1-6Hb" firstAttribute="leading" secondItem="XBI-vz-RfF" secondAttribute="leading" id="pQL-8w-cLS"/>
                             <constraint firstItem="XBI-vz-RfF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uv0-m9-jkb"/>
@@ -205,6 +209,6 @@
         <image name="defaultPhoto" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="w7e-2x-RdG"/>
+        <segue reference="N0T-uf-sFT"/>
     </inferredMetricsTieBreakers>
 </document>
