@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HhG-nK-IVi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HhG-nK-IVi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -125,12 +125,28 @@
                                     <outletCollection property="gestureRecognizers" destination="VXX-JX-g8n" appends="YES" id="Dyg-cj-3Dm"/>
                                 </connections>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7gM-FB-rpg">
+                                <rect key="frame" x="16" y="547" width="343" height="116"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mod-gY-3my">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="116"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7gM-FB-rpg" firstAttribute="leading" secondItem="ofW-sr-111" secondAttribute="leading" id="0hz-iJ-N1m"/>
                             <constraint firstItem="ofW-sr-111" firstAttribute="top" secondItem="jKS-n1-6Hb" secondAttribute="bottom" constant="8" id="B9N-Fu-L3h"/>
+                            <constraint firstItem="7gM-FB-rpg" firstAttribute="top" secondItem="ofW-sr-111" secondAttribute="bottom" constant="8" symbolic="YES" id="GYv-Vp-lu8"/>
                             <constraint firstItem="ofW-sr-111" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-32" id="LAE-aH-YiG"/>
                             <constraint firstItem="XBI-vz-RfF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="SHv-Le-3Ux"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7gM-FB-rpg" secondAttribute="bottom" constant="4" id="Voj-Iq-iM7"/>
+                            <constraint firstItem="7gM-FB-rpg" firstAttribute="trailing" secondItem="ofW-sr-111" secondAttribute="trailing" id="YwI-Bb-DEO"/>
                             <constraint firstItem="ofW-sr-111" firstAttribute="trailing" secondItem="XBI-vz-RfF" secondAttribute="trailing" id="ZD8-po-pP9"/>
                             <constraint firstItem="jKS-n1-6Hb" firstAttribute="top" secondItem="XBI-vz-RfF" secondAttribute="bottom" constant="8" id="awX-ui-nSV"/>
                             <constraint firstItem="jKS-n1-6Hb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="320:667" constant="23" id="cYr-kj-UPt"/>
@@ -152,6 +168,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mealDescriptionField" destination="mod-gY-3my" id="BIC-Zo-bON"/>
                         <outlet property="nameTextField" destination="P9o-c5-AiX" id="CEe-fJ-IUA"/>
                         <outlet property="photoImageView" destination="jKS-n1-6Hb" id="hbL-OF-f6U"/>
                         <outlet property="ratingControl" destination="ofW-sr-111" id="9XL-RU-BHy"/>

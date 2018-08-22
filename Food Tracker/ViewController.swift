@@ -31,6 +31,10 @@ class ViewController: UIViewController, UITextFieldDelegate,
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    // @IBOutlet weak var mealDescriptionTextView: UITextView!
+    @IBOutlet weak var mealDescriptionField: UITextView!
+    
+    
     /*
      This value is either passed by `MealTableViewController` in `prepare(for:sender:)`
      or constructed as part of adding a new meal.
@@ -93,9 +97,10 @@ class ViewController: UIViewController, UITextFieldDelegate,
         let name = nameTextField.text ?? ""
         let photo = photoImageView.image
         let rating = ratingControl.rating
+        let description = mealDescriptionField.text ?? ""
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        meal = Meal(name: name, photo: photo, rating: rating)
+        meal = Meal(name: name, photo: photo, rating: rating, mealDescription: description)
     }
     
     
@@ -130,6 +135,7 @@ class ViewController: UIViewController, UITextFieldDelegate,
             nameTextField.text   = meal.name
             photoImageView.image = meal.photo
             ratingControl.rating = meal.rating
+            mealDescriptionField.text = meal.mealDescription
         }       
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()

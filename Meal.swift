@@ -19,6 +19,8 @@ class Meal: NSObject, NSCoding {
     
     var rating: Int
     
+    var mealDescription: String
+    
     // Mark: Archiving Paths
     static var DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("meals")
@@ -29,11 +31,12 @@ class Meal: NSObject, NSCoding {
         static let name = "name"
         static let photo = "photo"
         static let rating = "rating"
+        static let mealDescription = "mealDescription"
     }
     
     // MarK: Initialization
     
-    init?(name: String, photo: UIImage?, rating: Int) {
+    init?(name: String, photo: UIImage?, rating: Int, mealDescription: String) {
         
         // Initialization should fail if there is no 
         // name or if the rating is negative.
@@ -51,14 +54,16 @@ class Meal: NSObject, NSCoding {
         self.name = name
         self.photo = photo
         self.rating = rating
+        self.mealDescription = mealDescription
     }
     
     // Mark: NSCoding
     
     func encode(with aCoder: NSCoder) {
-            aCoder.encode(name, forKey: PropertyKey.name)
-            aCoder.encode(photo, forKey: PropertyKey.photo)
-            aCoder.encode(rating, forKey: PropertyKey.rating)
+        aCoder.encode(name, forKey: PropertyKey.name)
+        aCoder.encode(photo, forKey: PropertyKey.photo)
+        aCoder.encode(rating, forKey: PropertyKey.rating)
+        aCoder.encode(mealDescription, forKey: PropertyKey.mealDescription)
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -72,9 +77,10 @@ class Meal: NSObject, NSCoding {
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as! UIImage
         
         let rating = aDecoder.decodeInteger(forKey: PropertyKey.rating)
+        let mealDescription = aDecoder.decodeObject(forKey: PropertyKey.mealDescription) as? String
         
         // Must call designated initializer.
-        self.init(name: name, photo: photo, rating: rating)
+        self.init(name: name, photo: photo, rating: rating, mealDescription: mealDescription!)
         
     }
 }
